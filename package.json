@@ -39,7 +39,8 @@
     "@babel/preset-env": "^7.0.0-beta.55",
     "@babel/preset-react": "^7.0.0-beta.55",
     "@babel/register": "^7.0.0-beta.55",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
-    "babel-loader": "^7.1.5"
+    "babel-loader": "^8.0.0-beta.4"
   }
 }
