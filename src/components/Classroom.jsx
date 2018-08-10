@@ -1,13 +1,15 @@
-import React, {Component} from 'react';
-import Messaging from './Messaging';
-import CodeEditor from './CodeEditor';
+import React, {Component} from 'react'
+import CodeEditor from './CodeEditor'
+import Canvas from './whiteboard/Canvas'
+import Messaging from './Messaging'
 
 export default class Classroom extends Component {
-  render () {
+  render() {
     return (
-      <div className='columns'>
+      <div className="columns">
         <Messaging />
         <CodeEditor />
+        <Canvas />
       </div>
     )
   }
