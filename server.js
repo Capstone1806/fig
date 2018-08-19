@@ -5,8 +5,10 @@ var express = require('express')
 var faker = require('faker')
 var AccessToken = require('twilio').jwt.AccessToken
 var VideoGrant = AccessToken.VideoGrant
+// const {functions} = require('firebase')
+
 require('./secrets')
-console.log(process.env)
+// console.log(process.env)
 
 var app = express()
 
@@ -34,7 +36,12 @@ app.use(function(req, res, next) {
   next()
 })
 
-console.log(process.env)
+// const TWILIO_ACCOUNT_SID = functions.config().twilio.sid
+// const TWILIO_API_KEY = functions.config().twilio.api_key
+// const TWILIO_API_SECRET = functions.config().twilio.secret
+
+// console.log(TWILIO_ACCOUNT_SID)
+// console.log(process.env)
 // Endpoint to generate access token
 app.get('/token', function(request, response) {
   var identity = faker.name.findName()
@@ -42,9 +49,9 @@ app.get('/token', function(request, response) {
   // Create an access token which we will sign and return to the client,
   // containing the grant we just created
   var token = new AccessToken(
-    process.env.ACCOUNT_SID,
-    process.env.API_KEY_SID,
-    process.env.API_KEY_SECRET
+    process.env.TWILIO_ACCOUNT_SID,
+    process.env.TWILIO_API_KEY,
+    process.env.TWILIO_API_SECRET
   )
 
   // Assign the generated identity to the token

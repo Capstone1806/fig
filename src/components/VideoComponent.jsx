@@ -5,54 +5,6 @@ import FormControl from '@material-ui/core/FormControl'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 
-// const styles = theme => ({
-//   container: {
-//     flexWrap: 'wrap',
-//     textAlign: 'center',
-//     position: 'relative',
-//     display: 'block',
-//     width: '100%'
-//   },
-//   margin: {
-//     margin: theme.spacing.unit
-//   },
-//   textField: {
-//     marginLeft: theme.spacing.unit,
-//     marginRight: theme.spacing.unit,
-//     width: 200
-//   },
-//   cssLabel: {
-//     '&$cssFocused': {
-//       color: purple[500]
-//     }
-//   },
-//   cssFocused: {},
-//   cssUnderline: {
-//     '&:after': {
-//       borderBottomColor: purple[500]
-//     }
-//   },
-//   bootstrapRoot: {
-//     padding: 0,
-//     'label + &': {
-//       marginTop: theme.spacing.unit * 3
-//     }
-//   },
-//   bootstrapInput: {
-//     borderRadius: 4,
-//     backgroundColor: theme.palette.common.white,
-//     border: '1px solid #ced4da',
-//     fontSize: 16,
-//     padding: '10px 12px',
-//     width: 'calc(100% - 24px)',
-//     transition: theme.transitions.create(['border-color', 'box-shadow']),
-//     '&:focus': {
-//       borderColor: '#80bdff',
-//       boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)'
-//     }
-//   }
-// })
-
 export default class VideoComponent extends Component {
   constructor(props) {
     super(props)
@@ -151,7 +103,6 @@ export default class VideoComponent extends Component {
       console.log("Already in Room: '" + participant.identity + "'")
       var previewContainer = this.refs.remoteMedia
       this.attachParticipantTracks(participant, previewContainer)
-      previewContainer.children[1].setAttribute('width', '100%')
     })
 
     // When a Participant joins the Room, log the event.
