@@ -4,9 +4,6 @@ import axios from 'axios'
 import FormControl from '@material-ui/core/FormControl'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
-// import RaisedButton from 'material-ui/RaisedButton'
-// import TextField from 'material-ui/TextField'
-// import {Card, CardHeader, CardText} from 'material-ui/Card'
 
 export default class VideoComponent extends Component {
   constructor(props) {
@@ -145,7 +142,6 @@ export default class VideoComponent extends Component {
       this.detachParticipantTracks(room.localParticipant)
       room.participants.forEach(this.detachParticipantTracks)
       this.setState({activeRoom: null})
-      // this.state.activeRoom = null
       this.setState({hasJoinedRoom: false, localMediaAvailable: false})
     })
   }

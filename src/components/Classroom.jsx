@@ -42,6 +42,7 @@ class Classroom extends Component {
       whiteboardId: '',
       codeEditorIds: [],
       chatsId: '',
+      notepadId: '',
       chat: true,
       codeEditors: true,
       canvas: true,
@@ -64,7 +65,8 @@ class Classroom extends Component {
         ...this.state.codeEditorIds,
         ...classroom.data().codeEditorIds
       ],
-      chatsId: classroom.data().chatsId
+      chatsId: classroom.data().chatsId,
+      notepadId: classroom.data().notepadId
     })
   }
 
@@ -124,6 +126,7 @@ class Classroom extends Component {
               <Grid item>
                 {this.state.notepad ? (
                   <Notepad
+                    notepadId={this.state.notepadId}
                     roomId={this.state.roomId}
                     handleDrop={() => this.handleDrop('notepad')}
                   />
@@ -137,17 +140,6 @@ class Classroom extends Component {
                     handleDrop={() => this.handleDrop('codeEditors')}
                   />
                 ) : null}
-              </Grid>
-              <Grid item>
-                <Card className={classes.card}>
-                  <CardContent>
-                    <Typography className={classes.title} color="textSecondary">
-                      Invite a Friend!
-                    </Typography>
-                    <InviteForm roomId={this.state.roomId} />
-                  </CardContent>
-                  <Button>Remove</Button>
-                </Card>
               </Grid>
             </Grid>
           </div>

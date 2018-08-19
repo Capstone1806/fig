@@ -14,7 +14,6 @@ import TextField from '@material-ui/core/TextField'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 
 const styles = theme => ({
@@ -55,15 +54,12 @@ class Profile extends Component {
       popUpMessageType: '',
       popUpMessage: '',
       emailFormOpen: false,
-      passwordFormOpen: true,
+      passwordFormOpen: false,
       userNameFormOpen: false,
       newEmail: '',
       newPassword: '',
       newUserName: ''
     }
-    this.changeEmail = this.changeEmail.bind(this)
-    this.changePassword = this.changePassword.bind(this)
-    this.handleClose = this.handleClose.bind(this)
   }
 
   async componentDidMount() {
@@ -76,7 +72,7 @@ class Profile extends Component {
       })
   }
 
-  handleClose(event, reason) {
+  handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return
     }
@@ -94,18 +90,16 @@ class Profile extends Component {
     })
   }
 
-  async changeEmail() {
+  changeEmail = async () => {
     const user = await firebase.auth().currentUser
     user
       .updateEmail(this.state.newEmail)
       .then(() => {
         this.setState({
           popUpMessage: 'Email successfully updated',
-          popUpMessageType: 'success'
+          popUpMessageType: 'success',
+          open: true
         })
-      })
-      .then(() => {
-        this.setState({open: true})
       })
       .then(() => {
         db.collection('users')
@@ -124,7 +118,7 @@ class Profile extends Component {
       })
   }
 
-  async changePassword() {
+  changePassword = async () => {
     var auth = firebase.auth()
     var emailAddress = await auth.currentUser.email
     auth
@@ -132,14 +126,18 @@ class Profile extends Component {
       .then(() => {
         this.setState({
           popUpMessage: 'Check your email for password reset!',
-          popUpMessageType: 'success'
+          popUpMessageType: 'success',
+          open: true
         })
-      })
-      .then(() => {
-        this.setState({open: true})
       })
       .catch(function(error) {
         console.log(error)
+        this.setState({
+          popUpMessage:
+            'Sorry about that, it seems there was an error trying to change your password.',
+          popUpMessageType: 'error',
+          open: true
+        })
       })
   }
 
@@ -151,7 +149,10 @@ class Profile extends Component {
       .update({username: this.state.newUserName})
       .then(() => {
         this.setState({
-          userNameFormOpen: false
+          userNameFormOpen: false,
+          popUpMessageType: 'success',
+          popUpMessage: 'Username successfully changed',
+          open: true
         })
       })
   }
@@ -211,7 +212,7 @@ class Profile extends Component {
                 horizontal: 'left'
               }}
               open={this.state.open}
-              autoHideDuration={6000}
+              autoHideDuration={4000}
               onClose={this.handleClose}
             >
               <Notification
