@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography'
 import DeleteIcon from '@material-ui/icons/Delete'
 import DoneIcon from '@material-ui/icons/Done'
 import CancelIcon from '@material-ui/icons/Cancel'
-import ShareIcon from '@material-ui/icons/Share'
+import PersonAddIcon from '@material-ui/icons/PersonAdd'
 import Snackbar from '@material-ui/core/Snackbar'
 import Notification from './Notification'
 import TextField from '@material-ui/core/TextField'
@@ -256,7 +256,7 @@ export class RoomCard extends Component {
               <Button
                 variant="fab"
                 mini
-                color="primary"
+                color="secondary"
                 className={classes.button}
                 onClick={() => this.setState({editFormOpen: true})}
               >
@@ -281,7 +281,7 @@ export class RoomCard extends Component {
               onClick={() => this.setState({inviteFormOpen: true})}
             >
               Invite
-              <ShareIcon className={classes.rightIcon} />
+              <PersonAddIcon className={classes.rightIcon} />
             </Button>
 
             <Button

@@ -127,7 +127,7 @@ form div {
   height: 45px;
 }
 .input-text {
-  font-size: 20px;
+  font-size: 15px;
   color: white;
 }
 .btn-login {
@@ -246,4 +246,20 @@ ul {
   text-align: center;
   letter-spacing: 4px;
   text-align: center;
+}
+
+[class*='MuiInputLabel-formControl-'] {
+  top: 0;
+  left: 15px !important;
+}
+
+#google {
+  width: 150px !important ;
+  height: 37px !important;
+  transition: none !important;
+}
+
+#google:hover {
+  background-color: white !important;
+  transition: none;
 }
