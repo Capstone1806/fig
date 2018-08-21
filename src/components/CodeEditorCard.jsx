@@ -27,7 +27,8 @@ import Notification from './Notification'
 
 const codeEditorSource = {
   beginDrag(props) {
-    return {...props, modName: 'codeEditors'}
+    console.log(props)
+    return {...props, modName: {id: props.codeEditorId}}
   }
 }
 
@@ -99,7 +100,6 @@ class CodeEditorCard extends Component {
       .doc(id)
       .get()
       .then(editor => {
-        console.log(editor.data())
         db.collection('users')
           .doc(editor.data().userId)
           .get()

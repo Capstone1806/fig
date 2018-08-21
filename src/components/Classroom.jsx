@@ -75,23 +75,33 @@ class Classroom extends Component {
     db.collection('rooms')
       .doc(this.props.classroom)
       .onSnapshot(snapshot => {
-        this.setState({
-          codeEditorIds: snapshot.data().codeEditorIds
+        let editorsVisible = {}
+        snapshot.data().codeEditorIds.forEach(id => {
+          editorsVisible[id] = true
         })
+        this.setState({
+          codeEditorIds: snapshot.data().codeEditorIds,
+          codeEditors: editorsVisible
+        })
+        console.log(this.state.codeEditors)
       })
   }
 
   handleDrop(item) {
-    if (item === 'codeEditor') {
-      this.setState({codeEditors: {...this.state.codeEditors, item: false}})
+    console.log(item)
+    if (typeof item === 'object') {
+      this.setState({
+        codeEditors: {...this.state.codeEditors, [item.id]: false}
+      })
     } else {
       this.setState({[item]: false})
     }
+    console.log(this.state)
   }
 
   addModule(item) {
     if (item === 'codeEditor') {
-      this.setState({codeEditors: {...this.state.codeEditors, item: true}})
+      this.setState({codeEditors: {...this.state.codeEditors, [item]: true}})
     } else {
       this.setState({[item]: true})
     }
@@ -155,19 +165,22 @@ class Classroom extends Component {
                   />
                 ) : null}
               </Grid>
+
               {this.state.codeEditorIds
-                ? this.state.codeEditorIds.map(id => {
-                    return (
-                      <CodeEditorCard
-                        key={id}
-                        codeEditorId={id}
-                        allEditorIds={this.state.codeEditorIds}
-                        roomId={this.state.roomId}
-                        handleDrop={() => this.handleDrop('codeEditor')}
-                        position={positions.codeEditors[id]}
-                      />
-                    )
-                  })
+                ? this.state.codeEditorIds
+                    .filter(id => this.state.codeEditors[id])
+                    .map(id => {
+                      return (
+                        <CodeEditorCard
+                          key={id}
+                          codeEditorId={id}
+                          allEditorIds={this.state.codeEditorIds}
+                          roomId={this.state.roomId}
+                          handleDrop={() => this.handleDrop({id})}
+                          position={positions.codeEditors[id]}
+                        />
+                      )
+                    })
                 : null}
             </Grid>
             <RoomStatusBar

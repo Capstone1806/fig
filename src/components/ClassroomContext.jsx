@@ -89,7 +89,6 @@ class ClassroomContext extends Component {
     if (!Object.keys(this.state.codeEditors).length) {
       return <div />
     }
-    console.log(this.state)
     return connectDropTarget(
       <div>
         <Classroom
