@@ -18,7 +18,7 @@ const classroomTarget = {
       return
     }
     const item = monitor.getItem()
-    const XY = monitor.getDifferenceFromInitialOffset()
+    const XY = monitor.getSourceClientOffset()
     const left = Math.round(item.position.left + XY.x)
     const top = Math.round(item.position.top + XY.y)
     component.moveModule(item, left, top, item.codeEditorId)

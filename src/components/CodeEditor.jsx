@@ -67,7 +67,7 @@ class CodeEditor extends Component {
       .doc(codeEditorId)
       .onSnapshot(code => {
         this.setState({
-          code: code.data().code,
+          // code: code.data().code,
           canType: this.canType()
         })
       })
