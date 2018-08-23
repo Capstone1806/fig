@@ -37,5 +37,5 @@ localhost:3000
 
 - [Jessica Hsu](https://github.com/hsujessica)
 - [Zachary Margolies](https://github.com/zacharymargolies)
-- [Synuhe Uribe](https://github.com/syunhe)
+- [Synuhe Uribe](https://github.com/synuhe)
 - [Liam Neville](https://github.com/lineville)
