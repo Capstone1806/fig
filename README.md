@@ -36,6 +36,6 @@ localhost:3000
 ## Team
 
 - [Jessica Hsu](https://github.com/hsujessica)
-- [Zachary Margolies](https://github.com/zachmargo)
+- [Zachary Margolies](https://github.com/zacharymargolies)
 - [Synuhe Uribe](https://github.com/syunhe)
 - [Liam Neville](https://github.com/lineville)
